@@ -1,6 +1,11 @@
 import { Square } from "./Square";
 
-export const GameBoard = ({ squares, handleClick }) => {
+type GameBoardProps = {
+  handleClick: (index: number) => void,
+  squares: (string | null)[],
+};
+
+export const GameBoard = ({ squares, handleClick }: GameBoardProps) => {
   return (
     <div className="board">
       <div className="board-row">

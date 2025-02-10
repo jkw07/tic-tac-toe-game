@@ -1,7 +1,13 @@
 import { ResetButton } from "./ResetButton";
 import { WinnerInfo } from "./WinnerInfo";
 
-export const Status = ({ handleResetClick, squares, xIsNext }) => {
+type StatusProps = {
+  handleResetClick: () => void,
+  squares: (string | null)[],
+  xIsNext: Boolean,
+};
+
+export const Status = ({ handleResetClick, squares, xIsNext }: StatusProps) => {
   const xIcon = <i className="fa-solid fa-x"></i>;
   const oIcon = <i className="fa-solid fa-o"></i>;
   let status = xIsNext ? (

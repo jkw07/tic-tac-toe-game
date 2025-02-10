@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { Status } from "./components/Status";
 import { GameBoard } from "./components/GameBoard";
@@ -8,7 +8,7 @@ export const App = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
 
-  const handleClick = (i) => {
+  const handleClick = (i: number) => {
     if (squares[i] || calculateWinner(squares)) {
       return;
     }
@@ -21,10 +21,12 @@ export const App = () => {
     setSquares(nextSquares);
     setXIsNext(!xIsNext);
   };
+
   const handleResetClick = () => {
     setSquares(Array(9).fill(null));
     setXIsNext(true);
   };
+
   return (
     <>
       <Status
