@@ -1,40 +1,29 @@
 import { ResetButton } from "./ResetButton";
 import { WinnerInfo } from "./WinnerInfo";
+import { PickGameSize } from "./PickGameSize";
 
 type StatusProps = {
   handleResetClick: () => void,
   squares: (string | null)[],
-  xIsNext: Boolean,
+  whoIsNext: "X" | "O",
+  gameSize: number,
 };
 
-export const Status = ({ handleResetClick, squares, xIsNext }: StatusProps) => {
-  const xIcon = <i className="fa-solid fa-x"></i>;
-  const oIcon = <i className="fa-solid fa-o"></i>;
-  let status = xIsNext ? (
-    <>
-      {xIcon} <span> TURN</span>
-    </>
-  ) : (
-    <>
-      {oIcon} <span> TURN</span>
-    </>
-  );
+export const Status = ({ handleResetClick, squares, whoIsNext, gameSize}: StatusProps) => {
+  let status = <span>{whoIsNext} TURN</span>
+
   return (
     <>
-      <div className="status">
-        <div className="game-logo">
-          <i
-            className="fa-solid fa-x fa-2xl icon"
-            style={{ color: "#63E6BE" }}
-          ></i>
-          <i
-            className="fa-solid fa-o fa-2xl icon"
-            style={{ color: "#FFD43B" }}
-          ></i>
-        </div>
-        <div className="status-info">{status}</div>
+    <div className="status">
+          <div className="game-logo">
+            <i className="fa-solid fa-x fa-2xl icon iconx"></i>
+            <i className="fa-solid fa-o fa-2xl icon icono"></i>
+          </div>
+          <button type="button" className="btn btn-light" onClick={handleResetGame}>
+            <i className="fa-solid fa-house"></i>
+          </button>
+        <div className="status-info">gameSize ? {status} : "Choose game size:"</div>
         <ResetButton handleResetClick={handleResetClick} />
-      </div>
       <WinnerInfo squares={squares} handleResetClick={handleResetClick} />
     </>
   );

@@ -1,6 +1,6 @@
 import { ResetButton } from "./ResetButton";
 
-export const calculateWinner = (squares: (string | null)[]): string | null => {
+export const calculateWinner = (squares: (string | null)[]): string | null | undefined => {
   const lines: number[][] = [
     [0, 1, 2],
     [3, 4, 5],
@@ -12,10 +12,10 @@ export const calculateWinner = (squares: (string | null)[]): string | null => {
     [2, 4, 6],
   ];
 
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+for (let i = 0; i < lines.length; i++) {
+    const lineMoves=[...new Set(lines[i].map(j => squares[j]))]
+    if (lineMoves.length === 1) {
+      return lineMoves[0];
     }
   }
   return null;

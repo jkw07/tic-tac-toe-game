@@ -81,8 +81,18 @@ main {
   background-color: #1f3540;
 }
 
+.icono {
+  color: #FFD43B;
+}
+
+.iconx {
+  color: #63E6BE;
+}
 
 .square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #1F3540;
   float: left;
   font-size: 36px;
@@ -92,7 +102,6 @@ main {
   margin-right: 5px;
   margin-top: 5px;
   padding: 0;
-  text-align: center;
   width: 60px;
   border-radius: 10px;
   color: #B3CAD6;
