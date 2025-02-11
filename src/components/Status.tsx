@@ -1,30 +1,27 @@
 import { ResetButton } from "./ResetButton";
 import { WinnerInfo } from "./WinnerInfo";
-import { PickGameSize } from "./PickGameSize";
+import { GameHeader} from "./GameHeader"
+import {GameLogo} from './GameLogo'
 
 type StatusProps = {
   handleResetClick: () => void,
   squares: (string | null)[],
   whoIsNext: "X" | "O",
   gameSize: number,
+  handleResetGame: () => void;
 };
 
-export const Status = ({ handleResetClick, squares, whoIsNext, gameSize}: StatusProps) => {
+export const Status = ({ handleResetClick, squares, whoIsNext, gameSize, handleResetGame}: StatusProps) => {
   let status = <span>{whoIsNext} TURN</span>
 
   return (
     <>
-    <div className="status">
-          <div className="game-logo">
-            <i className="fa-solid fa-x fa-2xl icon iconx"></i>
-            <i className="fa-solid fa-o fa-2xl icon icono"></i>
-          </div>
-          <button type="button" className="btn btn-light" onClick={handleResetGame}>
-            <i className="fa-solid fa-house"></i>
-          </button>
-        <div className="status-info">gameSize ? {status} : "Choose game size:"</div>
-        <ResetButton handleResetClick={handleResetClick} />
-      <WinnerInfo squares={squares} handleResetClick={handleResetClick} />
+      <div className="status">
+        <GameLogo/>
+        <GameHeader text={status}/>
+        <ResetButton handleResetClick={handleResetClick} handleResetGame={handleResetGame}/>
+        <WinnerInfo squares={squares} handleResetClick={handleResetClick} handleResetGame={handleResetGame}/>
+      </div>
     </>
   );
 };

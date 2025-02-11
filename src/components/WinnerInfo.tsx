@@ -24,9 +24,10 @@ for (let i = 0; i < lines.length; i++) {
 type WinnerInfoProps = {
   squares: (string | null)[];
   handleResetClick: () => void;
+  handleResetGame: () => void;
 }
 
-export const WinnerInfo = ({ squares, handleResetClick }: WinnerInfoProps) => {
+export const WinnerInfo = ({ squares, handleResetClick, handleResetGame }: WinnerInfoProps) => {
   const winner = calculateWinner(squares);
   return (
     <>
@@ -35,7 +36,7 @@ export const WinnerInfo = ({ squares, handleResetClick }: WinnerInfoProps) => {
           <div className="winner-info">
             <p>You won!</p>
             <h2>{winner} TAKES THE ROUND</h2>
-            <ResetButton handleResetClick={handleResetClick} />
+            <ResetButton handleResetClick={handleResetClick} handleResetGame={handleResetGame} />
           </div>
         </div>
       )}

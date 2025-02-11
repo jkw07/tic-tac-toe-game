@@ -45,10 +45,11 @@ export const StartGame = ({gameSize, handleResetGame}: StartGameProps) => {
         squares={squares}
         whoIsNext={whoIsNext}
         gameSize={gameSize}
+        handleResetGame={handleResetGame}
       />
-      {gameSize && <main>
-        <GameBoard squares={squares} handleClick={handleClick} />
-      </main>}
+      <main>
+        <GameBoard squares={squares} handleClick={handleClick} gameSize={gameSize}/>
+      </main>
     </>
   );
 };
