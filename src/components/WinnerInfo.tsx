@@ -1,23 +1,34 @@
 import { ResetButton } from "./ResetButton";
 
-export const calculateWinner = (squares: (string | null)[]): string | null | undefined => {
-  const lines: number[][] = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
+export const calculateWinner = (squares: (string | null)[], gameSize: number): string | null => {
+  const boardSize = Math.sqrt(gameSize);
+  let lines: number[][] = [];
 
-for (let i = 0; i < lines.length; i++) {
-    const lineMoves=[...new Set(lines[i].map(j => squares[j]))]
+  //poziome
+  for (let row = 0; row < boardSize; row++) {
+    let rowLine = [];
+    for (let col = 0; col < boardSize; col++) {
+      rowLine.push(row * boardSize + col);
+    }
+    lines.push(rowLine);
+  }
+
+  //pionowe
+  for (let col = 0; col < boardSize; col++) {
+    let colLine = [];
+    for (let row = 0; row < boardSize; row++) {
+      colLine.push(row * boardSize + col);
+    }
+    lines.push(colLine);
+  }
+
+  for (let i = 0; i < lines.length; i++) {
+    const lineMoves = [...new Set(lines[i].map(j => squares[j]))];
     if (lineMoves.length === 1) {
       return lineMoves[0];
     }
   }
+
   return null;
 };
 
@@ -25,10 +36,11 @@ type WinnerInfoProps = {
   squares: (string | null)[];
   handleResetClick: () => void;
   handleResetGame: () => void;
+  gameSize: number;
 }
 
-export const WinnerInfo = ({ squares, handleResetClick, handleResetGame }: WinnerInfoProps) => {
-  const winner = calculateWinner(squares);
+export const WinnerInfo = ({ squares, handleResetClick, handleResetGame, gameSize }: WinnerInfoProps) => {
+  const winner = calculateWinner(squares, gameSize);
   return (
     <>
       {winner && (
