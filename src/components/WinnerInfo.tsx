@@ -22,6 +22,16 @@ export const calculateWinner = (squares: (string | null)[], gameSize: number): s
     lines.push(colLine);
   }
 
+  //przekątna
+  let firstDiagonal = [];
+  let secondDiagonal = [];
+  for (let i = 0; i < boardSize; i++) {
+    firstDiagonal.push(i * boardSize + i);
+    secondDiagonal.push(i * boardSize + (boardSize - 1 - i));
+  }
+  lines.push(firstDiagonal);
+  lines.push(secondDiagonal);
+
   for (let i = 0; i < lines.length; i++) {
     const lineMoves = [...new Set(lines[i].map(j => squares[j]))];
     if (lineMoves.length === 1) {
