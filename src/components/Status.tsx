@@ -2,17 +2,11 @@ import { ResetButton } from "./ResetButton";
 import { WinnerInfo } from "./WinnerInfo";
 import { GameHeader} from "./GameHeader"
 import {GameLogo} from './GameLogo'
-import {Move} from './types'
+import { StatusProps } from "./types";
+import { ResetButtonProps } from "./types";
+import { GameSizeProps } from "./types";
 
-type StatusProps = {
-  handleResetClick: () => void,
-  squares: (string | null)[],
-  whoIsNext: Move,
-  gameSize: number,
-  handleResetGame: () => void;
-};
-
-export const Status = ({ handleResetClick, squares, whoIsNext, gameSize, handleResetGame}: StatusProps) => {
+export const Status = ({ handleResetClick, squares, whoIsNext, gameSize, handleResetGame}: StatusProps & ResetButtonProps & GameSizeProps) => {
   let status = <span>{whoIsNext} TURN</span>
 
   return (

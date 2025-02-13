@@ -1,12 +1,8 @@
 import { Square } from "./Square";
+import { GameBoardProps } from "./types";
+import { GameSizeProps } from "./types";
 
-type GameBoardProps = {
-  handleClick: (index: number) => void,
-  squares: (string | null)[],
-  gameSize: number;
-};
-
-export const GameBoard = ({ squares, handleClick, gameSize }: GameBoardProps) => {
+export const GameBoard = ({ squares, handleClick, gameSize }: GameBoardProps & GameSizeProps) => {
   const boardSize = Math.sqrt(gameSize);
   return (
     <div className="board" style={{gridTemplateColumns: `repeat(${boardSize}, 1fr)`, height:`${boardSize*70}px`, width:`${boardSize*70}px`}}>

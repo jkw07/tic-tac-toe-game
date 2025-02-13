@@ -2,13 +2,10 @@ import { useState } from "react";
 
 import { Status } from "./Status";
 import { GameBoard } from "./GameBoard";
-import { calculateWinner } from "./WinnerInfo";
-import {Move} from './types';
+import { calculateWinner } from "./CalculateWinner";
 
-type StartGameProps = {
-    gameSize: number;
-    handleResetGame: () => void;
-}
+import {Move} from './types';
+import { StartGameProps } from "./types";
 
 export const StartGame = ({gameSize, handleResetGame}: StartGameProps) => {
     const [whoIsNext, setWhoIsNext] = useState<Move>(Move.X);
