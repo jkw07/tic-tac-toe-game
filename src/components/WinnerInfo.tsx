@@ -10,7 +10,7 @@ export const WinnerInfo = ({ squares, handleResetClick, handleResetGame, gameSiz
       {winner && (
         <div className="overlay">
           <div className="winner-info">
-            <p>You won!</p>
+            <p>YOU WON!</p>
             <h2>{winner} TAKES THE ROUND</h2>
             <ResetButton handleResetClick={handleResetClick} handleResetGame={handleResetGame} />
           </div>

@@ -1,3 +1,12 @@
+:root {
+  --yellow: #FFD43B;
+  --turquise: #52c2a0;
+  --green: #1F3540;
+  --light: #B3CAD6;
+}
+
+
+
 * {
   box-sizing: border-box;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,7 +28,7 @@
 }
 
 button {
-  background-color: #B3CAD6;
+  background-color: var(--light);
   margin: 5px;
 }
 
@@ -30,21 +39,21 @@ button i {
 .status-info {
   font-size: 28px;
   font-weight: bold;
-  background-color: #1F3540;
+  background-color: var(--green);
   padding: 0 20px;
   border-radius: 10px;
-  color: #B3CAD6;
+  color: var(--light);
 }
 
 .status-info span {
   padding-left: 8px;
-  background-color: #1F3540;
-  color: #B3CAD6;
+  background-color: var(--green);
+  color: var(--light);
 }
 
 .status-info i {
-  background-color: #1F3540;
-  color: #B3CAD6;
+  background-color: var(--green);
+  color: var(--light);
 }
 
 main {
@@ -67,36 +76,48 @@ main {
 }
 
 .winner-info {
-  background-color: #1f3540;
+  background-color: var(--green);
   padding: 30px;
   border-radius: 10px;
   text-align: center;
-  color: #B3CAD6;
+  color: var(--light);
+  width: 100%;
 }
+
+.square-X {
+  background-color: var(--turquise)
+}
+
+.square-O {
+  background-color: var(--yellow);
+}
+
+.square-null {
+  background-color: var(--green);
+} 
 
 .winner-info h2 {
   font-size: 32px;
   font-weight: bold;
-  background-color: #1f3540;
+  background-color: var(--green);
 }
 
 .winner-info p {
-  background-color: #1f3540;
+  background-color: var(--green);
 }
 
 .icono {
-  color: #FFD43B;
+  color: var(--yellow);
 }
 
 .iconx {
-  color: #63E6BE;
+  color: var(--turquise);
 }
 
 .square {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #1F3540;
   float: left;
   font-size: 36px;
   font-weight: bold;
@@ -107,7 +128,7 @@ main {
   padding: 0;
   width: 60px;
   border-radius: 10px;
-  color: #B3CAD6;
+  color: black;
 }
 
 .game-size-button {
@@ -116,10 +137,23 @@ main {
   padding: 0;
   font-size: 20px;
   line-height: 50px;
+  border-radius: 10px;
 }
 
 .board {
   display: grid;
+}
+
+.home-button {
+  background-color: var(--yellow);
+}
+
+.winner-info h2 {
+  color: var(--turquise)
+}
+
+.winner-info .buttons {
+  background-color: var(--green);
 }
 
 @media (max-width: 400px) {

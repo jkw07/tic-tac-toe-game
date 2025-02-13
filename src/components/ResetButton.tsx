@@ -6,7 +6,7 @@ export const ResetButton = ({ handleResetClick, handleResetGame }: ResetButtonPr
       <button type="button" className="btn btn-light" onClick={handleResetClick}>
         <i className="fa-solid fa-arrow-rotate-left"></i>
       </button>
-      <button type="button" className="btn btn-light" onClick={handleResetGame}>
+      <button type="button" className="btn home-button" onClick={handleResetGame}>
         <i className="fa-solid fa-house"></i>
       </button>
     </div>
