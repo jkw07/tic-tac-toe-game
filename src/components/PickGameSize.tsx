@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 import { StartGame } from './StartGame';
 import { GameHeader } from './GameHeader';
-import {GameLogo} from './GameLogo'
+import {GameRules} from './GameRules'
 
 
 export const PickGameSize = () => {
@@ -18,7 +18,6 @@ export const PickGameSize = () => {
         {!gameSize && 
         <>
             <div className="status">
-                <GameLogo/>
                 <GameHeader text="TIC TAC TOE GAME"/>
             </div>
             <div className="status">
@@ -26,6 +25,7 @@ export const PickGameSize = () => {
                 <button className="game-size-button" value={16} onClick={() => pickGameSize(16)}>Size: 4x4</button>
                 <button className="game-size-button" value={25} onClick={() => pickGameSize(25)}>Size: 5x5</button>
             </div>
+            <GameRules/>
         </>}
         {gameSize && <StartGame gameSize={gameSize} handleResetGame={handleResetGame}/>}
     </>

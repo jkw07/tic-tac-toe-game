@@ -1,41 +1,45 @@
 export const calculateWinner = (squares: (string | null)[], gameSize: number): string | null => {
   const boardSize = Math.sqrt(gameSize);
-  let lines: number[][] = [];
+  const winCondition = gameSize === 9 ? 3 : 4;
 
-  //poziome
-  for (let row = 0; row < boardSize; row++) {
-    let rowLine = [];
-    for (let col = 0; col < boardSize; col++) {
-      rowLine.push(row * boardSize + col);
+  // poziomo
+ for (let row = 0; row < boardSize; row++) {
+    for (let col = 0; col <= boardSize - winCondition; col++) {
+      const start = row * boardSize + col;
+      if (squares[start] && Array.from({ length: winCondition }, (_, i) => squares[start + i]).every(cell => cell === squares[start])) {
+        return squares[start];
+      }
     }
-    lines.push(rowLine);
   }
 
-  //pionowe
+  // pionowo
   for (let col = 0; col < boardSize; col++) {
-    let colLine = [];
-    for (let row = 0; row < boardSize; row++) {
-      colLine.push(row * boardSize + col);
-    }
-    lines.push(colLine);
-  }
-
-  //przekątna
-  let firstDiagonal = [];
-  let secondDiagonal = [];
-  for (let i = 0; i < boardSize; i++) {
-    firstDiagonal.push(i * boardSize + i);
-    secondDiagonal.push(i * boardSize + (boardSize - 1 - i));
-  }
-  lines.push(firstDiagonal);
-  lines.push(secondDiagonal);
-
-  for (let i = 0; i < lines.length; i++) {
-    const lineMoves = [...new Set(lines[i].map(j => squares[j]))];
-    if (lineMoves.length === 1) {
-      return lineMoves[0];
+    for (let row = 0; row <= boardSize - winCondition; row++) {
+      const start = row * boardSize + col;
+      if (squares[start] && Array.from({ length: winCondition }, (_, i) => squares[start + i * boardSize]).every(cell => cell === squares[start])) {
+        return squares[start];
+      }
     }
   }
 
+  //ukosnie \ lewo-gora do prawo-dol
+  for (let row = 0; row <= boardSize - winCondition; row++) {
+    for (let col = 0; col <= boardSize - winCondition; col++) {
+      const start = row * boardSize + col;
+      if (squares[start] && Array.from({ length: winCondition }, (_, i) => squares[start + i * (boardSize + 1)]).every(cell => cell === squares[start])) {
+        return squares[start];
+      }
+    }
+  }
+
+  //ukosnie / prawo-gora do lewo-dol
+  for (let row = 0; row <= boardSize - winCondition; row++) {
+    for (let col = winCondition - 1; col < boardSize; col++) {
+      const start = row * boardSize + col;
+      if (squares[start] && Array.from({ length: winCondition }, (_, i) => squares[start + i * (boardSize - 1)]).every(cell => cell === squares[start])) {
+        return squares[start];
+      }
+    }
+  }
   return null;
 };

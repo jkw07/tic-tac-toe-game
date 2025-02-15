@@ -1,22 +1,22 @@
-import { ResetButton } from "./ResetButton";
-import { WinnerInfo } from "./WinnerInfo";
+import { ResetButtons } from './ResetButtons';
+import { EndGameInfo } from "./EndGameInfo";
 import { GameHeader} from "./GameHeader"
-import {GameLogo} from './GameLogo'
 import { StatusProps } from "./types";
 import { ResetButtonProps } from "./types";
 import { GameSizeProps } from "./types";
 
 export const Status = ({ handleResetClick, squares, whoIsNext, gameSize, handleResetGame}: StatusProps & ResetButtonProps & GameSizeProps) => {
   let status = <span>{whoIsNext} TURN</span>
+  let lineLength = gameSize === 9 ? 3 : 4;
 
   return (
     <>
       <div className="status">
-        <GameLogo/>
         <GameHeader text={status}/>
-        <ResetButton handleResetClick={handleResetClick} handleResetGame={handleResetGame}/>
-        <WinnerInfo squares={squares} handleResetClick={handleResetClick} handleResetGame={handleResetGame} gameSize={gameSize}/>
+        <ResetButtons handleResetClick={handleResetClick} handleResetGame={handleResetGame}/>
+        <EndGameInfo squares={squares} handleResetClick={handleResetClick} handleResetGame={handleResetGame} gameSize={gameSize}/>
       </div>
+      <p className="line-length">To win place {lineLength} marks in a row!</p>
     </>
   );
 };
